@@ -7,6 +7,8 @@ public class Roadworks {
     String Link;
     String Coordinates;
     String Published;
+    double Latitude;
+    double Longitude;
 
     public Roadworks() {
 
@@ -58,11 +60,37 @@ public class Roadworks {
         this.Published = Published;
     }
 
+    public double getLatitude() {
+        return Latitude;
+    }
+
+    public void setLatitude(double Latitude) {
+        this.Latitude = Latitude;
+    }
+
+    public double getLongitude() {
+        return Longitude;
+    }
+
+    public void setLongitude(double Longitude) {
+        this.Longitude = Longitude;
+    }
+
+    public void Separate_Coordinates (String Coordinates){
+        String [] Separate = Coordinates.split(" ");
+
+        Double Lat = Double.parseDouble(Separate[0]);
+        Double Long = Double.parseDouble(Separate[1]);
+
+        setLatitude(Lat);
+        setLongitude(Long);
+    }
+
     @Override
     public String toString() {
 
         String temp;
-        temp = ("Title: " + Road + "\n" + "Description: " + Description + "\n" + "Link: " + Link + "\n" + "Coordinates: " + Coordinates + "\n" + "Published: " + Published);
+        temp = ("Title: " + Road + "\n" + "Description: " + Description + "\n" + "Link: " + Link + "\n" + "Latitude: " + Latitude +  "\n" + "Longitude: " + Longitude + "\n" + "Published: " + Published);
         return temp;
     }
 }
