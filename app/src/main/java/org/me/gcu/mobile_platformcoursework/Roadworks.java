@@ -1,14 +1,25 @@
 package org.me.gcu.mobile_platformcoursework;
 
+import android.util.Log;
+
+// Roadwork class for storing parsed data
+//
+//// Created by Andrew Gaw S1626042
+////
+////
+
+
 public class Roadworks {
 
     String Road;
     String Description;
     String Link;
     String Coordinates;
-    String Published;
     double Latitude;
     double Longitude;
+    String Start_date;
+    String End_date;
+
 
     public Roadworks() {
 
@@ -16,7 +27,8 @@ public class Roadworks {
         Description = "";
         Link = "";
         Coordinates = "";
-        Published = "";
+        Start_date = "";
+        End_date="";
 
     }
 
@@ -52,14 +64,6 @@ public class Roadworks {
         this.Coordinates = Coordinates;
     }
 
-    public String getPublished() {
-        return Published;
-    }
-
-    public void setPublished(String Published) {
-        this.Published = Published;
-    }
-
     public double getLatitude() {
         return Latitude;
     }
@@ -76,6 +80,22 @@ public class Roadworks {
         this.Longitude = Longitude;
     }
 
+    public String getStart_date(){
+        return Start_date;
+    }
+
+    public void setStart_date(String Start_date){
+        this.Start_date = Start_date;
+    }
+
+    public String getEnd_date(){
+        return End_date;
+    }
+
+    public void setEnd_date(String End_date){
+        this.End_date = End_date;
+    }
+
     public void Separate_Coordinates (String Coordinates){
         String [] Separate = Coordinates.split(" ");
 
@@ -86,11 +106,28 @@ public class Roadworks {
         setLongitude(Long);
     }
 
+    public void Separate_Description (String Description){
+
+        String [] Separate = Description.split("<br />");
+
+        if (Separate.length > 1){
+
+            String temp_start = (Separate[0]);
+            String temp_end  = (Separate[1]);
+
+            setStart_date(temp_start);
+            setEnd_date(temp_end);
+        }
+
+    }
+
+
+
     @Override
     public String toString() {
 
         String temp;
-        temp = ("Title: " + Road + "\n" + "Description: " + Description + "\n" + "Link: " + Link + "\n" + "Latitude: " + Latitude +  "\n" + "Longitude: " + Longitude + "\n" + "Published: " + Published);
+        temp = ("Title: " + Road + "\n" + Start_date + "\n"  + End_date +  "\n" + "\n");
         return temp;
     }
 }

@@ -5,18 +5,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,6 +22,12 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+// Main Activity class for the Application
+//
+//// Created by Andrew Gaw S1626042
+////
+////
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
     private TextView rawDataDisplay;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-       //IF Statement for XML Links
+       //IF Statement for each URL Link
         String item = parent.getItemAtPosition(position).toString();
 
 
@@ -157,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                         } else if (xpp.getName().equalsIgnoreCase("description")) {
 
                             String temp = xpp.nextText();
-                            roadworks.setDescription(temp);
+                            roadworks.Separate_Description(temp);
 
                         }else if (xpp.getName().equalsIgnoreCase("Link")){
 
@@ -168,11 +170,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
                             String temp = xpp.nextText();
                             roadworks.Separate_Coordinates(temp);
-
-                        }else if (xpp.getName().equalsIgnoreCase("pubDat")){
-
-                            String temp = xpp.nextText();
-                            roadworks.setPublished(temp);
                         }
 
                     } else if (eventType == XmlPullParser.END_TAG) {
@@ -226,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
                     Log.d("UI thread", "I am the UI thread"); //Tag for Testing (REMOVE)
 
                     String data = "";
-
+//
                     for(Roadworks roadworks:alist) {
                         roadworks.toString();
 

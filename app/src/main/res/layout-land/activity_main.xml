@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Portrait layout created by Andrew Gaw S1626042-->
+<!-- Landscape layout created by Andrew Gaw S1626042-->
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent"
         android:orientation="vertical">
